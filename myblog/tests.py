@@ -25,9 +25,9 @@ class PostTestCase(TestCase):
 
     def test_author_name(self):
         expected = "Mr.Administrator"
-       p1 = Post(author = self.user)
-       actual = p1.author_name
-       self.assertEqual(expected, actual)
+        p1 = Post(author = self.user)
+        actual = p1.author_name
+        self.assertEqual(expected, actual)
 
 
 class CategoryTestCase(TestCase):
