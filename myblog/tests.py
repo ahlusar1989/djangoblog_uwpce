@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 from django.utils.timezone import utc
 from myblog.models import Post, Category
 
-class AuthorTestCase(TestCase):
-    def test_author_name(self):
-        expected = u"Super"
-        p1 = Post.author_name
-        actual = unicode(p1)
-        self.assertEqual(expected, actual)
+##class AuthorTestCase(TestCase):
+##    def test_author_name(self):
+##        expected = u"Super"
+##        p1 = Post.author_name
+##        actual = unicode(p1)
+##        self.assertEqual(expected, actual)
 
 class PostTestCase(TestCase):
     fixtures = ['myblog_test_fixture.json', ]
@@ -24,11 +24,10 @@ class PostTestCase(TestCase):
         self.assertEqual(expected, actual)
 
     def test_author_name(self):
-        expected = "Mr.Administrator"
+        expected = u"Mr. Administrator"
         p1 = Post(author = self.user)
         actual = p1.author_name()
         self.assertEqual(expected, actual)
-
 
 class CategoryTestCase(TestCase):
 
