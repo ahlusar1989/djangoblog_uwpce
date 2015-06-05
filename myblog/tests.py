@@ -7,7 +7,7 @@ from myblog.models import Post, Category
 class AuthorTestCase(TestCase):
     def test_author_name(self):
         expected = u"Super"
-        p1 = Post,author_name
+        p1 = Post.author_name
         actual = unicode(p1)
         self.assertEqual(expected, actual)
 
