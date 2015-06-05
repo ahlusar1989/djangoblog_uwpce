@@ -46,6 +46,8 @@ class FrontEndTestCase(TestCase):
         self.now = datetime.datetime.utcnow().replace(tzinfo=utc)
         self.timedelta = datetime.timedelta(15)
         author = User.objects.get(pk=1)
+        category = Category()
+        category.name = "Test Category"
         for count in range(1, 11):
             post = Post(title="Post %d Title" % count,
                         text="foo",
@@ -76,3 +78,11 @@ class FrontEndTestCase(TestCase):
                 self.assertContains(resp, title)
             else:
                 self.assertEqual(resp.status_code, 404)
+
+    def test_category_url(self):
+        response = self.client.get('/categories/1')
+        self.assertEqual(resp.status_code, 200)
+        self.assertContains(resp, "Category: Test Category")
+        self.assertContains(resp, "Post 1 Title")
+        self.assertContains(resp, "Post 3 Title")
+        self.assertContains(resp, "Post 5 Title")
